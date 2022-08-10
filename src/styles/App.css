@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App {
+    width: 800px;
+}
+
+t .counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+}
+
+.likes {
+    margin: 20px;
+}
+
+.timer {
+    padding: 15px;
+    border: 2px solid blue;
+    margin: 15px;
+    width: 50px;
+}
+
+.post {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin-top: 5%;
+    background-color: lightblue;
+}
+
+.input {
+    margin: 10px 0;
+    padding: 5px 15px;
+    border: 1px solid blue;
+    width: 100%;
+    background-color: rgb(152, 242, 242);
+}
+
+.form {
+    margin-top: 50px;
+}
+
+.message {
+    display: flex;
+    margin: 50px;
+    justify-content: center;
+    color: blue;
+    border: 2px solid blueviolet;
+    padding: 17px;
+}
+
+.btn {
+    padding: 10px;
+    margin-left: 15px;
+    color: blue;
+    background-color: rgb(129, 243, 243);
+    font-size: x-large;
+}
