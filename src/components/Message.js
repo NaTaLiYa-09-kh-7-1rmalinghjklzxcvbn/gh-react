@@ -1,6 +1,6 @@
 function Message(props) {
     return (
-        <div style={{ textAlign: "center", color: 'red' }}>
+        <div style={{ textAlign: "center", margin: '20px', color: 'red' }}>
             привет {props.name}
         </div>
     );
