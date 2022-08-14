@@ -50,11 +50,12 @@ t .counter {
 
 .message {
     display: flex;
-    margin: 50px;
+    margin: 10%;
     justify-content: center;
     color: blue;
-    border: 2px solid blueviolet;
+
     padding: 17px;
+    width: 80%;
 }
 
 .btn {
@@ -63,4 +64,9 @@ t .counter {
     color: blue;
     background-color: rgb(129, 243, 243);
     font-size: x-large;
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
 }

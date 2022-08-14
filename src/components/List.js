@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import { useState, useEffect } from 'react'
-import MessagePost from './MessagePost';
-//import MyInput from './MyInput';
+import ChatList from './ChatList';
 import { Button } from '@mui/material';
 import { FormControl, TextField } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
@@ -11,21 +10,21 @@ import { blue } from '@mui/material/colors';
 const theme = createTheme({
     palette: {
         primary: {
-            main: blue[400],
+            main: blue[500],
         }
     }
 })
-const MessageList = () => {
+const List = () => {
     const initialMessageList = []
     const [messageList, setMessageList] = useState(initialMessageList)
     const [alertMessage, setAlertMessage] = useState(null)
-    const [messages, setMessages] = useState({ text: '', author: '' })
+    const [messages, setMessages] = useState({ text: '', name: '' })
     const ref = useRef(null)
 
     const addMessage = (e) => {
         e.preventDefault()
         setMessageList([...messageList, { ...messages, id: Date.now() }])
-        setMessages({ text: '', author: '' })
+        setMessages({ text: '', name: '' })
         ref.current.focus()
     }
 
@@ -38,6 +37,7 @@ const MessageList = () => {
     useEffect(() => {
         if (messageList != initialMessageList) {
             sendAlert()
+
         }
         ref.current.focus()
     }, [messageList]);
@@ -45,15 +45,14 @@ const MessageList = () => {
 
     const change = (e) => {
         e.preventDefault()
-        return setAlertMessage(null)
+        setAlertMessage(null)
+        ref.current.focus()
     }
     return (
         <ThemeProvider theme={theme}>
             <div>
-                <h1>Список сообщений</h1>
-                {messageList.map((message, index) =>
-                    <MessagePost number={index + 1} key={message.id} message={message} />
-                )}
+                <h2>Сообщение</h2>
+
                 <form className='form'>
                     <FormControl sx={{ width: '90%' }}>
                         <TextField
@@ -68,35 +67,24 @@ const MessageList = () => {
                         <TextField
                             helperText="Please enter your author"
                             id="demo-helper-text-misaligned"
-                            label="Author"
+                            label="Name"
                             color='success'
-                            value={messages.author}
-                            onChange={e => setMessages({ ...messages, author: e.target.value })}
+                            value={messages.name}
+                            onChange={e => setMessages({ ...messages, name: e.target.value })}
                         />
 
                     </FormControl>
-                    {/* <MyInput
-                    value={messages.text}
-                    type='text'
-                    placeholder='Введите текст'
-                    onChange={e => setMessages({ ...messages, text: e.target.value })}
-                />
-                <MyInput
-                    type='text'
-                    placeholder='Введите автора'
-                    value={messages.author}
-                    onChange={e => setMessages({ ...messages, author: e.target.value })}
-            >
 
-            </MyInput>*/}
                     <Button variant="contained"
                         color='primary'
                         type='button' onClick={addMessage}
-                        sx={{ mt: '10px' }}
+                        sx={{ mt: '10px', width: '90%' }}
                     >
                         Отправить
                     </Button>
-
+                    {messageList.map((message, index) =>
+                        <ChatList sx={{ width: '50%' }} number={index + 1} key={message.id} message={message} />
+                    )}
                     {alertMessage &&
                         <div className='message'>
                             <h1>{alertMessage}</h1>
@@ -107,15 +95,12 @@ const MessageList = () => {
                                 type='button' className='btn' onClick={change}>
                                 x
                             </Button>
-
                         </div>
-
                     }
-
                 </form>
             </div>
         </ThemeProvider>
     )
 }
 
-export default MessageList
+export default List
