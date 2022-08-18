@@ -5,6 +5,7 @@ import { Button } from '@mui/material';
 import { FormControl, TextField } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import { blue } from '@mui/material/colors';
+import { create } from '@mui/material/styles/createTransitions';
 
 
 const theme = createTheme({
@@ -14,7 +15,7 @@ const theme = createTheme({
         }
     }
 })
-const List = () => {
+const List = ({ create, remove }) => {
     const initialMessageList = []
     const [messageList, setMessageList] = useState(initialMessageList)
     const [alertMessage, setAlertMessage] = useState(null)
@@ -23,7 +24,10 @@ const List = () => {
 
     const addMessage = (e) => {
         e.preventDefault()
-        setMessageList([...messageList, { ...messages, id: Date.now() }])
+        const newPost = {
+            ...messages, id: Date.now()
+        }
+        create(newPost)
         setMessages({ text: '', name: '' })
         ref.current.focus()
     }
@@ -40,7 +44,7 @@ const List = () => {
 
         }
         ref.current.focus()
-    }, [messageList]);
+    }, [create]);
 
 
     const change = (e) => {
@@ -83,7 +87,8 @@ const List = () => {
                         Отправить
                     </Button>
                     {messageList.map((message, index) =>
-                        <ChatList sx={{ width: '50%' }} number={index + 1} key={message.id} message={message} />
+
+                        <ChatList remove={remove} sx={{ width: '50%' }} number={index + 1} key={message.id} message={message} />
                     )}
                     {alertMessage &&
                         <div className='message'>

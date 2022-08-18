@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button'
 
 
 const ChatList = (props) => {
@@ -15,8 +16,9 @@ const ChatList = (props) => {
 
             <List sx={{
                 width: '100%',
-                marginLeft: '-40%',
+                marginLeft: '-30%',
                 display: 'flex',
+                justifyContent: 'space-between',
                 maxWidth: 360,
                 bgcolor: 'background.paper'
 
@@ -26,9 +28,11 @@ const ChatList = (props) => {
                     <ListItemAvatar>
                         <Avatar alt="Cindy Baker" />
                     </ListItemAvatar>
-
+                    {props.number}
                 </ListItem>
+
                 <ListItemText
+                    sx={{ width: '100%' }}
                     primary={props.message.name}
                     secondary={
                         <React.Fragment>
@@ -38,13 +42,20 @@ const ChatList = (props) => {
                                 variant="body2"
                                 color="text.primary"
                             >
-                                {props.index}
+                                {props.message.text}
                             </Typography>
-                            {props.message.text}
                         </React.Fragment>
                     }
                 />
 
+                <Button variant="contained"
+                    color='primary'
+                    type='button'
+                    onClick={() => props.remove(props.message)}
+                    sx={{ margin: '10px' }}
+                >
+                    x
+                </Button>
 
             </List>
         </div>
