@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import '../styles/App.css';
 import ChatList from './ChatList';
 import List from './List';
 

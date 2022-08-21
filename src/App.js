@@ -1,27 +1,27 @@
 import React from 'react';
 import './styles/App.css';
-import List from './components/List';
-import AboutPage from './components/AboutPage';
-import HomePage from './components/HomePage'
-import { Route, Routes, Link, NavLink } from 'react-router-dom';
-import Error from './components/Error';
-import Layout from './components/Layout';
+import { useState } from 'react'
+import { themes, ThemeContext } from './components/pages/Context'
+import PagesWrapper from './components/pages/PagesWrapper'
+import CountLogica from './components/count/CountLogica';
+import CountRedux from './components/redux/CountRedux';
 
 
 function App() {
+  const [currentThem, setCurrentThem] = useState(themes.light)
+  const handleToggle = () => {
+    setCurrentThem(prevState => prevState === themes.light ? themes.dark : themes.light)
+  }
   return (
     <div>
-      <Routes>
-        <Route path={'/'} element={<Layout />} >
-          <Route index element={<HomePage />} />
-          <Route path={'/about'} element={<AboutPage />} />
-          <Route path={'/list'} element={<List />} />
-        </Route>
-        <Route path={'*'} element={<Error />} />
-      </Routes>
+      <ThemeContext.Provider value={{ themes: currentThem, handleToggle: handleToggle }}>
+        <div>
+          <PagesWrapper />
 
-
-
+          <CountLogica />
+        </div>
+      </ThemeContext.Provider>
+      <CountRedux />
     </div>
   );
 
