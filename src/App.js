@@ -5,8 +5,8 @@ import { themes, ThemeContext } from './components/pages/Context'
 import PagesWrapper from './components/pages/PagesWrapper'
 import CountLogica from './components/count/CountLogica';
 import CountRedux from './components/redux/CountRedux';
-
-
+import Store from './components/reducers/chatReduser/Store'
+import ReducersCach from './components/reducers/ReducersCach';
 function App() {
   const [currentThem, setCurrentThem] = useState(themes.light)
   const handleToggle = () => {
@@ -14,14 +14,15 @@ function App() {
   }
   return (
     <div>
-      <ThemeContext.Provider value={{ themes: currentThem, handleToggle: handleToggle }}>
+      {/*<ThemeContext.Provider value={{ themes: currentThem, handleToggle: handleToggle }}>
         <div>
-          <PagesWrapper />
+         <PagesWrapper />*
 
           <CountLogica />
         </div>
-      </ThemeContext.Provider>
-      <CountRedux />
+  </ThemeContext.Provider>*/}
+
+      <Store />
     </div>
   );
 
