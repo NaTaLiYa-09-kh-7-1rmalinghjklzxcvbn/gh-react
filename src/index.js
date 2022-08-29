@@ -5,7 +5,8 @@ import Rout from './components/message/Rout'
 import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { store } from './components/reducers/chatReduser/InitialStore'
+import { persist, store } from './components/reducers/chatReduser/InitialStore'
+import { PersistGate } from 'redux-persist/integration/react';
 
 const initialState = {
   count: 0
@@ -37,7 +38,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
     <Provider store={store}>
-      <App />
+      <PersistGate persistor={persist}>
+        <App />
+      </PersistGate>
     </Provider>
 
     {/* <BrowserRouter>

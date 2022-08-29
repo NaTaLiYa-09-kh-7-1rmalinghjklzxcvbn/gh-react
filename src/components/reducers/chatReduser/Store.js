@@ -33,7 +33,11 @@ const Store = () => {
     }
 
     const deleteChat = (id) => {
-        dispatch({ type: 'delete_chat', payload: id })
+        dispatch({
+            type: 'delete_chat', payload: id, meta: {
+                delay: 2000
+            }
+        })
     }
     const handleChange = ((e) => setName(e.target.value))
 
