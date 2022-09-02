@@ -5,13 +5,12 @@ import Rout from './components/message/Rout'
 import App from './App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { persist, store } from './components/reducers/chatReduser/InitialStore'
+//import { persist, store } from './components/reducers/chatReduser/InitialStore'
 import { PersistGate } from 'redux-persist/integration/react';
-
-const initialState = {
+import { store } from './components/albums/redux/InitialStore'
+/*const initialState = {
   count: 0
 };
-
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'plus':
@@ -32,21 +31,19 @@ const reducer = (state = initialState, action) => {
 
 }
 
-// export const store = createStore(reducer);
-
+ export const store = createStore(reducer);
+*/
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <div>
+  <BrowserRouter>
     <Provider store={store}>
-      <PersistGate persistor={persist}>
-        <App />
-      </PersistGate>
+      <App />
     </Provider>
 
     {/* <BrowserRouter>
       <Rout />
 </BrowserRouter>*/}
-  </div>
+  </BrowserRouter>
 
 
 );

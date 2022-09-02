@@ -7,6 +7,12 @@ import CountLogica from './components/count/CountLogica';
 import CountRedux from './components/redux/CountRedux';
 import Store from './components/reducers/chatReduser/Store'
 import ReducersCach from './components/reducers/ReducersCach';
+import Message from './components/reducers/chatReduser/Message';
+import { Route, Routes } from 'react-router-dom'
+import ApiUser from './components/apiUser/ApiUser';
+import ApiAlbums from './components/albums/ApiAlbums';
+
+
 function App() {
   const [currentThem, setCurrentThem] = useState(themes.light)
   const handleToggle = () => {
@@ -20,9 +26,12 @@ function App() {
 
           <CountLogica />
         </div>
-  </ThemeContext.Provider>*/}
-
-      <Store />
+  </ThemeContext.Provider>
+      <Routes>
+        <Route path='/' element={<Store />} />
+        <Route path='/messages/:id' element={<Message />} />
+      </Routes>*/}
+      <ApiAlbums />
     </div>
   );
 

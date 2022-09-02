@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useRef } from "react";
 import { getMessage } from "./MessageSelector";
 import { getChats } from "./ChatSelector";
+import { Link } from 'react-router-dom'
 
 const Store = () => {
     const chats = useSelector(getChats)
@@ -9,7 +10,6 @@ const Store = () => {
     const [text, setText] = useState('');
     const [name, setName] = useState('')
     const dispatch = useDispatch();
-
     const addMessage = () => {
         const obj = {
             id: Date.now(),
@@ -64,7 +64,7 @@ const Store = () => {
                 return (
                     <h2
                         key={chat.id}>{index + 1}
-                        <div>{chat.name}</div>
+                        <Link to={`/messages/${chat.id}`}>{chat.name}</Link>
                         <button onClick={() => deleteChat(chat.id)}>Удалить</button>
                     </h2>
                 )
