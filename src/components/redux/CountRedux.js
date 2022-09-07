@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const CountRedux = () => {
     const count = useSelector(state => state.count)
-    console.log(count);
     const dispatch = useDispatch();
     return (
         <div style={{

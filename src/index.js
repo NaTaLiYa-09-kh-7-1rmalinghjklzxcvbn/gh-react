@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 //import { persist, store } from './components/reducers/chatReduser/InitialStore'
 import { PersistGate } from 'redux-persist/integration/react';
-import { store } from './components/albums/redux/InitialStore'
+import { store } from './reduxFirebase/ConfigureStore'
 /*const initialState = {
   count: 0
 };

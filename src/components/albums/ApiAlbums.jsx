@@ -13,6 +13,10 @@ const ApiAlbums = () => {
         dispatch(getAlbums())
     }, [])
 
+    const restart = () => {
+        dispatch(getAlbums())
+    }
+
     if (loading) {
         return (
             <h3>
@@ -23,7 +27,7 @@ const ApiAlbums = () => {
     if (error) {
         return (
             <h3>
-                Ошибка
+                Ошибка. <button onClick={restart}>Обновить</button>
             </h3>
         )
     }
