@@ -1,4 +1,4 @@
-import { registerInitiate } from "../Actions";
+import { registerInitiate } from "../redux/Actions";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";

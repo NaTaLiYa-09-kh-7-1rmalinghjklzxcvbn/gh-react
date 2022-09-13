@@ -1,8 +1,8 @@
 import React from 'react';
-import './styles/App.css';
+import './reduxFirebase/Style.css'
 import { useState } from 'react'
 import { themes, ThemeContext } from './components/pages/Context'
-import PathPages from './reduxFirebase/PathPages';
+import PathPages from './reduxFirebase/component/PathPages';
 
 function App() {
   const [currentThem, setCurrentThem] = useState(themes.light)

@@ -22,7 +22,10 @@ function AboutPage() {
             <div className='list'>
                 <div style={{ width: '50%', marginRight: '5%' }}><h2>Список чатов</h2>
                     {chats.map((message, index) =>
-                        <ChatList remove={removeMessage} number={index + 1} message={message} key={message.id} />
+                        <ChatList remove={removeMessage}
+                            number={index + 1}
+                            message={message}
+                            key={message.id} />
                     )}
 
                 </div>
